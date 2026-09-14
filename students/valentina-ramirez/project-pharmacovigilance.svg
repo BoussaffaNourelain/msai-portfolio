@@ -1,0 +1,17 @@
+<svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A shield icon with a safety signal, representing AI-powered pharmacovigilance">
+  <rect x="0" y="0" width="400" height="225" fill="#FBF8F2"/>
+  <path d="M200,40 L250,58 V108 C250,140 228,164 200,176 C172,164 150,140 150,108 V58 Z"
+        fill="none" stroke="#0F6E6E" stroke-width="4"/>
+  <path d="M182,108 L196,124 L222,92" fill="none" stroke="#C9A227" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="200" cy="108" r="55" fill="none" stroke="#0F6E6E" stroke-width="1" opacity="0.25"/>
+
+  <g stroke="#0F6E6E" stroke-width="2" opacity="0.5" fill="none">
+    <polyline points="60,175 90,160 115,178 140,150 165,168"/>
+  </g>
+  <circle cx="140" cy="150" r="5" fill="#C9A227"/>
+
+  <g stroke="#0F6E6E" stroke-width="2" opacity="0.5" fill="none">
+    <polyline points="240,168 265,150 290,178 315,160 340,175"/>
+  </g>
+  <circle cx="290" cy="178" r="5" fill="#C9A227"/>
+</svg>
