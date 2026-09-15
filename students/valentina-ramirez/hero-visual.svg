@@ -1,0 +1,65 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A molecular ring structure connecting into a neural network, representing pharmaceutical science meeting artificial intelligence">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FBF8F2"/>
+      <stop offset="1" stop-color="#EFF5F4"/>
+    </linearGradient>
+    <linearGradient id="bridge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0F6E6E"/>
+      <stop offset="1" stop-color="#C9A227"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="800" height="400" rx="18" fill="url(#bg)"/>
+
+  <g stroke="#0F6E6E" stroke-width="3" fill="none" opacity="0.9">
+    <polygon points="210,200 180,252 120,252 90,200 120,148 180,148"/>
+    <polygon points="315,200 285,252 225,252 195,200 225,148 285,148"/>
+    <polygon points="255,120 285,72 345,72 375,120 345,168 285,168"/>
+  </g>
+  <g fill="#C9A227">
+    <circle cx="210" cy="200" r="6"/>
+    <circle cx="180" cy="252" r="6"/>
+    <circle cx="120" cy="252" r="6"/>
+    <circle cx="90" cy="200" r="6"/>
+    <circle cx="120" cy="148" r="6"/>
+    <circle cx="180" cy="148" r="6"/>
+    <circle cx="315" cy="200" r="6"/>
+    <circle cx="285" cy="252" r="6"/>
+    <circle cx="225" cy="252" r="6"/>
+    <circle cx="225" cy="148" r="6"/>
+    <circle cx="285" cy="148" r="6"/>
+    <circle cx="285" cy="72" r="6"/>
+    <circle cx="345" cy="72" r="6"/>
+    <circle cx="375" cy="120" r="6"/>
+    <circle cx="345" cy="168" r="6"/>
+  </g>
+
+  <path d="M390,180 C450,140 470,140 520,180" stroke="url(#bridge)" stroke-width="3" fill="none" stroke-dasharray="2 10" stroke-linecap="round"/>
+  <circle cx="420" cy="167" r="5" fill="#C9A227">
+    <animate attributeName="cx" values="400;500;400" dur="4s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.2;1;0.2" dur="4s" repeatCount="indefinite"/>
+  </circle>
+
+  <g stroke="#0F6E6E" stroke-width="1.5" opacity="0.55">
+    <line x1="540" y1="150" x2="630" y2="110"/>
+    <line x1="540" y1="150" x2="630" y2="200"/>
+    <line x1="540" y1="150" x2="630" y2="290"/>
+    <line x1="540" y1="270" x2="630" y2="110"/>
+    <line x1="540" y1="270" x2="630" y2="200"/>
+    <line x1="540" y1="270" x2="630" y2="290"/>
+    <line x1="630" y1="110" x2="720" y2="150"/>
+    <line x1="630" y1="200" x2="720" y2="150"/>
+    <line x1="630" y1="200" x2="720" y2="270"/>
+    <line x1="630" y1="290" x2="720" y2="270"/>
+  </g>
+  <g fill="#0F6E6E">
+    <circle cx="540" cy="150" r="9"/>
+    <circle cx="540" cy="270" r="9"/>
+    <circle cx="630" cy="110" r="9"/>
+    <circle cx="630" cy="200" r="9"/>
+    <circle cx="630" cy="290" r="9"/>
+    <circle cx="720" cy="150" r="9"/>
+    <circle cx="720" cy="270" r="9"/>
+  </g>
+</svg>

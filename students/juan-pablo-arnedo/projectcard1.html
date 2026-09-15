@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skill Builder — Juan Pablo Arnedo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  .project-img{border-radius:16px;width:100%;max-width:520px;aspect-ratio:4/3;object-fit:cover;margin-bottom:32px}
+  .detail-section{margin-top:48px;padding-top:40px;border-top:1px solid var(--line)}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tag{background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;padding:5px 14px;font-size:13px;color:var(--ink-soft);font-weight:600}
+  .back{display:inline-block;margin-bottom:32px;color:var(--blue);font-weight:600;font-size:14px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="badge" href="index.html">Juan Pablo Arnedo</a>
+  <a class="pill" href="index.html#projects">← Projects</a>
+  <a class="pill" href="../../">All students</a>
+  <span class="spacer"></span>
+  <a class="pill" href="https://atlantisuniversity.edu/program/master-of-science-in-artificial-intelligence/" target="_blank" rel="noopener">MS in AI</a>
+</nav>
+
+<div class="wrap">
+
+  <a class="back" href="index.html#projects">← Back to projects</a>
+
+  <img class="project-img" src="icon1.jpg" alt="Skill Builder project icon">
+  <h1>Skill Builder</h1>
+  <p class="quote">Building reusable AI tools that handle a task the same way every time, without re-explaining the rules from scratch.</p>
+
+  <div class="detail-section">
+    <h2>What it is</h2>
+    <p>A Claude Code skill is a short file — written in plain text — that tells the AI exactly how to approach a specific, recurring task. Instead of re-explaining the same rules in every conversation, you write them once and trigger the skill with a slash command. The AI reads the skill file before responding, so the output follows the same logic and structure every time.</p>
+    <p>The assignment was to design and build skills that solve a real, repeated business problem — not toy examples, but tools someone would actually use in their work.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>What I did</h2>
+    <p>I built two skills from scratch.</p>
+    <p><strong>Supplier Weekly Brief</strong> — This skill processes three inputs that a procurement team collects every week: a delivery spreadsheet (promised vs. actual dates, delays, amounts), a quality-incidents log (what went wrong and what it cost), and the notes from each Zoom call with suppliers. The tricky part is that the same cost often appears in two or three of those sources at once. The skill is designed to identify those overlaps and merge them without counting the same amount twice. The output is a single, decision-ready brief the committee can act on in a few minutes.</p>
+    <p><strong>Anthropic Brand Guidelines</strong> — This skill reads a document and applies Anthropic's official visual identity: the correct brand colors (dark ink, red accent, blue secondary) and the correct typefaces (Poppins for headings, Lora for body text). It handles the case where custom fonts are not installed by falling back to standard system fonts gracefully, so the output is always usable.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>What came out</h2>
+    <p>Two working skill files, each with a <code>SKILL.md</code> that Claude Code can read and execute immediately. The Supplier Weekly Brief processes a full week of supplier data in seconds and produces a structured report covering delivery performance, cost exposure, open commitments, and decisions needed. The Brand Guidelines skill styles any document to Anthropic's identity without requiring any design knowledge from the person using it.</p>
+    <p>Both skills are installed and in active use.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>Tools and technologies</h2>
+    <div class="tag-row">
+      <span class="tag">Claude Code</span>
+      <span class="tag">SKILL.md format</span>
+      <span class="tag">Python</span>
+      <span class="tag">python-pptx</span>
+      <span class="tag">Anthropic API</span>
+      <span class="tag">Markdown</span>
+    </div>
+  </div>
+
+  <footer>MS in Artificial Intelligence · Atlantis University</footer>
+</div>
+
+<script src="../../assets/feedback.js" defer></script>
+</body>
+</html>

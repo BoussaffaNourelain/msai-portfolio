@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>More Memory — Juan Pablo Arnedo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  .project-img{border-radius:16px;width:100%;max-width:520px;aspect-ratio:4/3;object-fit:cover;margin-bottom:32px}
+  .detail-section{margin-top:48px;padding-top:40px;border-top:1px solid var(--line)}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tag{background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;padding:5px 14px;font-size:13px;color:var(--ink-soft);font-weight:600}
+  .back{display:inline-block;margin-bottom:32px;color:var(--blue);font-weight:600;font-size:14px}
+  .type-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:16px}
+  .type-card{background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .type-card strong{display:block;font-size:14px;color:var(--ink);margin-bottom:4px}
+  .type-card span{font-size:13px;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="badge" href="index.html">Juan Pablo Arnedo</a>
+  <a class="pill" href="index.html#projects">← Projects</a>
+  <a class="pill" href="../../">All students</a>
+  <span class="spacer"></span>
+  <a class="pill" href="https://atlantisuniversity.edu/program/master-of-science-in-artificial-intelligence/" target="_blank" rel="noopener">MS in AI</a>
+</nav>
+
+<div class="wrap">
+
+  <a class="back" href="index.html#projects">← Back to projects</a>
+
+  <img class="project-img" src="icon3.jpg" alt="More Memory project icon">
+  <h1>More Memory</h1>
+  <p class="quote">A running memory layer that captures what matters from AI conversations and saves it to Notion so nothing is lost when the chat closes.</p>
+
+  <div class="detail-section">
+    <h2>What it is</h2>
+    <p>AI conversations are ephemeral by default. When you close a chat, the context disappears — things you explained about yourself, decisions you made, patterns the assistant learned about how you work. The next session starts from zero.</p>
+    <p>More Memory is a small web page and Claude Code skill that solves this. Anything worth keeping — a preference, a project decision, a lesson learned — gets saved to a structured Notion database instead of disappearing. Future conversations can pick it up by checking the memory at the start of a session.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>What I did</h2>
+    <p>I built a local web page as a simple front end for viewing and managing saved memories. Behind it, I configured the Notion MCP server inside Claude Code, which gives the assistant direct write access to a Notion workspace without any manual copy-pasting.</p>
+    <p>I then wrote the skill instructions that tell the assistant when and how to save something: what counts as worth keeping, how to classify it, and where to file it. Memories are organized into four types:</p>
+
+    <div class="type-row">
+      <div class="type-card">
+        <strong>User</strong>
+        <span>Who you are, your role, how you like to work</span>
+      </div>
+      <div class="type-card">
+        <strong>Project</strong>
+        <span>Ongoing work, goals, decisions, deadlines</span>
+      </div>
+      <div class="type-card">
+        <strong>Feedback</strong>
+        <span>What worked, what to avoid, corrections</span>
+      </div>
+      <div class="type-card">
+        <strong>Reference</strong>
+        <span>Where to find things — links, file paths, systems</span>
+      </div>
+    </div>
+
+    <p style="margin-top:24px">Each memory is stored with a name, a description, and the full content — enough that a future conversation can understand it without extra context.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>What came out</h2>
+    <p>A memory layer that is running and growing. When I ask Claude to remember something during a session, it appears in Notion within seconds, tagged and organized. At the start of the next session, the assistant checks the memory index and picks up where we left off — without me having to re-explain who I am or what I am working on.</p>
+    <p>The system is used in every Claude Code session and is the reason the assistant already knew my name, branch, links, and project history at the start of tonight's session.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>Tools and technologies</h2>
+    <div class="tag-row">
+      <span class="tag">Claude Code</span>
+      <span class="tag">Notion MCP server</span>
+      <span class="tag">Notion API</span>
+      <span class="tag">HTML</span>
+      <span class="tag">PARA method</span>
+      <span class="tag">Markdown</span>
+    </div>
+  </div>
+
+  <footer>MS in Artificial Intelligence · Atlantis University</footer>
+</div>
+
+<script src="../../assets/feedback.js" defer></script>
+</body>
+</html>

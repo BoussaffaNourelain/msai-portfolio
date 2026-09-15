@@ -1,0 +1,61 @@
+<svg width="800" height="450" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e2a35"/>
+      <stop offset="100%" stop-color="#2f4356"/>
+    </linearGradient>
+    <radialGradient id="radarGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7fa8a3" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#7fa8a3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="675" fill="url(#bgGrad3)"/>
+
+  <g transform="rotate(2.5 780 340)">
+    <!-- radar rings -->
+    <circle cx="780" cy="340" r="230" fill="url(#radarGlow)"/>
+    <circle cx="780" cy="340" r="230" fill="none" stroke="#7fa8a3" stroke-width="2" opacity="0.5"/>
+    <circle cx="780" cy="340" r="170" fill="none" stroke="#7fa8a3" stroke-width="2" opacity="0.4"/>
+    <circle cx="780" cy="340" r="110" fill="none" stroke="#7fa8a3" stroke-width="2" opacity="0.4"/>
+    <circle cx="780" cy="340" r="50" fill="none" stroke="#7fa8a3" stroke-width="2" opacity="0.4"/>
+    <line x1="550" y1="340" x2="1010" y2="340" stroke="#7fa8a3" stroke-width="1" opacity="0.3"/>
+    <line x1="780" y1="110" x2="780" y2="570" stroke="#7fa8a3" stroke-width="1" opacity="0.3"/>
+
+    <!-- sweep -->
+    <path d="M780 340 L780 110 A230 230 0 0 1 970 230 Z" fill="#7fa8a3" opacity="0.18"/>
+  </g>
+
+  <!-- network nodes and lines connecting distributed clients -->
+  <g stroke="#d8c9a3" stroke-width="2" opacity="0.55">
+    <line x1="200" y1="230" x2="780" y2="340"/>
+    <line x1="230" y1="470" x2="780" y2="340"/>
+    <line x1="200" y1="230" x2="230" y2="470"/>
+    <line x1="120" y1="350" x2="200" y2="230"/>
+    <line x1="120" y1="350" x2="230" y2="470"/>
+  </g>
+  <g fill="#c98a7d">
+    <circle cx="200" cy="230" r="14"/>
+    <circle cx="230" cy="470" r="14"/>
+    <circle cx="120" cy="350" r="14"/>
+  </g>
+
+  <!-- abstract plane markers (triangles), dotted-halftone accents -->
+  <g fill="#d8c9a3">
+    <polygon points="330,260 300,285 330,278 360,285" transform="rotate(35 330 272)"/>
+    <polygon points="420,150 388,178 420,170 452,178" transform="rotate(-20 420 164)"/>
+    <polygon points="900,470 868,498 900,490 932,498" transform="rotate(150 900 484)"/>
+  </g>
+
+  <g fill="#7fa8a3" opacity="0.5">
+    <circle cx="500" cy="100" r="4"/>
+    <circle cx="530" cy="115" r="4"/>
+    <circle cx="560" cy="95" r="4"/>
+    <circle cx="1000" cy="150" r="4"/>
+    <circle cx="1030" cy="170" r="4"/>
+    <circle cx="1060" cy="150" r="4"/>
+    <circle cx="150" cy="560" r="4"/>
+    <circle cx="180" cy="580" r="4"/>
+    <circle cx="210" cy="560" r="4"/>
+  </g>
+</svg>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capstone: Local AI for Home Assistant — Juan Pablo Arnedo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  .project-img{border-radius:16px;width:100%;max-width:520px;aspect-ratio:4/3;object-fit:cover;margin-bottom:32px}
+  .detail-section{margin-top:48px;padding-top:40px;border-top:1px solid var(--line)}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tag{background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;padding:5px 14px;font-size:13px;color:var(--ink-soft);font-weight:600}
+  .back{display:inline-block;margin-bottom:32px;color:var(--blue);font-weight:600;font-size:14px}
+  .status-badge{display:inline-block;background:#FEF3C7;color:#92400E;border:1px solid #FDE68A;border-radius:6px;padding:5px 14px;font-size:13px;font-weight:700;margin-bottom:32px}
+  .component-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px}
+  .component{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .component h3{margin:0 0 8px;font-size:15px;color:var(--ink)}
+  .component p{margin:0;font-size:13px;color:var(--ink-soft);line-height:1.55}
+  .component .label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="badge" href="index.html">Juan Pablo Arnedo</a>
+  <a class="pill" href="index.html#projects">← Projects</a>
+  <a class="pill" href="../../">All students</a>
+  <span class="spacer"></span>
+  <a class="pill" href="https://atlantisuniversity.edu/program/master-of-science-in-artificial-intelligence/" target="_blank" rel="noopener">MS in AI</a>
+</nav>
+
+<div class="wrap">
+
+  <a class="back" href="index.html#projects">← Back to projects</a>
+
+  <span class="status-badge">In development</span>
+
+  <img class="project-img" src="icon4.jpg" alt="Capstone: Local AI for Home Assistant">
+  <h1>Capstone: Local AI for Home Assistant</h1>
+  <p class="quote">A home AI system that thinks, listens, watches, and acts — entirely on local hardware, with no data leaving the house.</p>
+
+  <div class="detail-section">
+    <h2>The idea</h2>
+    <p>The goal is to build an AI assistant for the home that works like the cloud assistants people already know — you can speak to it, it understands what you want, and it makes things happen — but with one critical difference: every piece of data stays inside the house.</p>
+    <p>No voice recording sent to a server. No camera image uploaded to the cloud. No conversation logged by a third party. The reasoning happens on local hardware, the cameras are processed locally, and the home automation runs on a local network. The system works even when the internet is down.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>Why local matters</h2>
+    <p>Cloud AI services are powerful, but every word you say and every image you share leaves your home and goes to a server you do not control. For a home assistant — where cameras see your rooms, microphones hear your conversations, and the system knows exactly when you are home — that is a real privacy trade-off, not a theoretical one.</p>
+    <p>Running the model locally means your home's data stays your home's data.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>How it works — the components</h2>
+
+    <div class="component-grid">
+
+      <div class="component">
+        <div class="label">Language model</div>
+        <h3>Local LLM via Ollama</h3>
+        <p>An open-weight language model (such as Llama or Mistral) runs on local hardware through Ollama. It handles natural-language understanding and task planning without needing an internet connection. This is the brain of the system.</p>
+      </div>
+
+      <div class="component">
+        <div class="label">Home automation</div>
+        <h3>Home Assistant</h3>
+        <p>The open-source home automation platform that controls lights, locks, thermostats, appliances, and any other connected device. The AI connects to it through its local API and can read sensor states and trigger actions.</p>
+      </div>
+
+      <div class="component">
+        <div class="label">Camera analysis</div>
+        <h3>Frigate</h3>
+        <p>An open-source NVR (network video recorder) with built-in AI object detection. Frigate processes camera feeds entirely on the local machine and sends events to Home Assistant — person detected, car in driveway, door left open — without any cloud processing.</p>
+      </div>
+
+      <div class="component">
+        <div class="label">Voice input</div>
+        <h3>Whisper (local speech-to-text)</h3>
+        <p>OpenAI's Whisper model runs locally and converts spoken commands to text. The text goes to the language model, which decides what action to take. No audio leaves the house at any point.</p>
+      </div>
+
+      <div class="component">
+        <div class="label">Notifications</div>
+        <h3>Local messaging bridge</h3>
+        <p>The system can push notifications to a phone when something is detected or a task completes — a motion alert, a confirmation that the lights turned off, a reminder. The bridge runs on the local network.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>What has been done so far</h2>
+    <p>Home Assistant is installed and running on local hardware, controlling several devices in the home. The architecture for the full system — how the components connect, what data flows where, how the language model receives events from Frigate and sends commands to Home Assistant — is designed and documented. Component selection for the local language model hardware and the voice interface is underway.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>Tools and technologies</h2>
+    <div class="tag-row">
+      <span class="tag">Home Assistant</span>
+      <span class="tag">Ollama</span>
+      <span class="tag">Frigate</span>
+      <span class="tag">Whisper (speech-to-text)</span>
+      <span class="tag">Python</span>
+      <span class="tag">Local network hardware</span>
+      <span class="tag">REST API</span>
+    </div>
+  </div>
+
+  <footer>MS in Artificial Intelligence · Atlantis University</footer>
+</div>
+
+<script src="../../assets/feedback.js" defer></script>
+</body>
+</html>

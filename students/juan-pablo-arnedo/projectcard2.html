@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skills Showcase Landing Page — Juan Pablo Arnedo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  .project-img{border-radius:16px;width:100%;max-width:520px;aspect-ratio:4/3;object-fit:cover;margin-bottom:32px}
+  .detail-section{margin-top:48px;padding-top:40px;border-top:1px solid var(--line)}
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tag{background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;padding:5px 14px;font-size:13px;color:var(--ink-soft);font-weight:600}
+  .back{display:inline-block;margin-bottom:32px;color:var(--blue);font-weight:600;font-size:14px}
+  .prompt-block{background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:20px 24px;margin-top:16px}
+  .prompt-block h3{margin:0 0 8px;font-size:15px;color:var(--ink)}
+  .prompt-block p{margin:0;font-size:14px;color:var(--ink-soft);line-height:1.55}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="badge" href="index.html">Juan Pablo Arnedo</a>
+  <a class="pill" href="index.html#projects">← Projects</a>
+  <a class="pill" href="../../">All students</a>
+  <span class="spacer"></span>
+  <a class="pill" href="https://atlantisuniversity.edu/program/master-of-science-in-artificial-intelligence/" target="_blank" rel="noopener">MS in AI</a>
+</nav>
+
+<div class="wrap">
+
+  <a class="back" href="index.html#projects">← Back to projects</a>
+
+  <img class="project-img" src="icon2.jpg" alt="Skills Showcase Landing Page icon">
+  <h1>Skills Showcase Landing Page</h1>
+  <p class="quote">A fully responsive event page built entirely through prompts — no HTML written by hand.</p>
+
+  <div class="detail-section">
+    <h2>What it is</h2>
+    <p>A landing page is a focused web page built around a single action — in this case, registering for a guest talk. The event was <em>Agents That Ship</em>, a session at Atlantis University's School of Technology on what actually breaks when AI agent systems move from a demo to a real production environment.</p>
+    <p>The talk covered three failure points: orchestration falling apart once one agent becomes many, evaluation going stale as real-world inputs drift away from demo data, and the moment an agent needs to admit it is stuck and hand control back to a human.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>What I did</h2>
+    <p>Rather than writing HTML directly, I built the page by writing a sequence of three detailed prompts for Lovable, an AI web builder that converts text descriptions into working code. Each prompt added one complete layer without disturbing what came before.</p>
+
+    <div class="prompt-block">
+      <h3>Prompt 1 — Visual identity and hero</h3>
+      <p>Established the Technology blue color scheme, set the typographic scale, and built the full-viewport hero section with the headline "Agents That Ship," a supporting description, and a primary Register Now button.</p>
+    </div>
+
+    <div class="prompt-block">
+      <h3>Prompt 2 — Speaker and talk</h3>
+      <p>Added a speaker block for Diana Renard (Head of Platform Engineering at Rivet Labs) with a photo placeholder, and a talk section describing the three production failure points, all styled to match the first prompt's design.</p>
+    </div>
+
+    <div class="prompt-block">
+      <h3>Prompt 3 — Logistics and registration</h3>
+      <p>Added a Logistics section (Tuesday 13 October 2026, 6:30–8:00 PM, Campus Auditorium, Doral campus) and a registration form with first name, last name, email, and affiliation. On submit, the form shows an inline confirmation message without reloading the page.</p>
+    </div>
+
+    <p style="margin-top:24px">The key skill was writing each prompt precisely enough that the new layer integrated cleanly with everything already on the page.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>What came out</h2>
+    <p>A complete, fully responsive web page: a full-screen hero, a speaker and talk block, an event details section, and a working registration form — built without writing a single line of HTML or CSS by hand. The page adjusts correctly on desktop, tablet, and mobile. The registration form shows a confirmation message on submit without navigating away from the page.</p>
+  </div>
+
+  <div class="detail-section">
+    <h2>Tools and technologies</h2>
+    <div class="tag-row">
+      <span class="tag">Lovable (AI web builder)</span>
+      <span class="tag">Prompt engineering</span>
+      <span class="tag">HTML / CSS (generated)</span>
+      <span class="tag">Responsive design</span>
+      <span class="tag">Form handling</span>
+    </div>
+  </div>
+
+  <footer>MS in Artificial Intelligence · Atlantis University</footer>
+</div>
+
+<script src="../../assets/feedback.js" defer></script>
+</body>
+</html>

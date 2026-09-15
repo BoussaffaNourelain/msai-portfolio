@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juan Pablo Arnedo — MS in Artificial Intelligence</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  /* Cards: hover lifts, click presses */
+  a.card{
+    display:block;color:inherit;text-decoration:none;
+    transition:transform 0.20s ease,box-shadow 0.20s ease;
+  }
+  a.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 30px rgba(16,24,40,.12);
+    text-decoration:none;
+  }
+  a.card:active{
+    transform:scale(0.96);
+    box-shadow:0 2px 8px rgba(16,24,40,.08);
+    transition:transform 0.08s ease,box-shadow 0.08s ease;
+  }
+  /* Rail-link buttons: blue background, white text, sink on click */
+  .rail-link{
+    background:#1E6FE0;
+    border-color:#1E6FE0;
+    color:#FFFFFF;
+    transition:transform 0.12s ease,box-shadow 0.12s ease,background 0.12s ease;
+  }
+  .rail-link:hover{
+    background:#1857B4;
+    border-color:#1857B4;
+    color:#FFFFFF;
+    text-decoration:none;
+  }
+  .rail-link:active{
+    transform:scale(0.95) translateY(2px);
+    box-shadow:inset 0 2px 6px rgba(0,0,0,.20);
+    background:#1245A0;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="badge" href="#top">Juan Pablo Arnedo</a>
+  <a class="pill" href="#projects">Projects</a>
+  <a class="pill" href="#education">Education</a>
+  <a class="pill" href="../../">All students</a>
+  <span class="spacer"></span>
+  <a class="pill" href="https://atlantisuniversity.edu/program/master-of-science-in-artificial-intelligence/" target="_blank" rel="noopener">MS in AI</a>
+</nav>
+
+<div class="wrap" id="top">
+  <div class="cols">
+
+    <!-- ================= LEFT RAIL ================= -->
+    <aside>
+      <div class="photo-card">
+        <img src="photo.jpg" alt="Photograph of Juan Pablo Arnedo">
+      </div>
+
+      <a class="rail-link" href="https://www.linkedin.com/in/juan-pablo-arnedo-5a18b4411/">LinkedIn profile</a>
+      <a class="rail-link" href="https://github.com/Patagonico71">GitHub profile</a>
+      <a class="rail-link" href="https://drive.google.com/uc?export=download&id=1J8r5DhMeXZkUWOvOSPXdyiI8us0ifb5w">Résumé</a>
+    </aside>
+
+    <!-- ================= MAIN COLUMN ================= -->
+    <main>
+      <h1>Juan Pablo Arnedo</h1>
+
+      <p class="quote">
+        I Hope The OPT stills exist when we finish the Master.
+      </p>
+
+      <h2 id="projects">Current Projects</h2>
+      <div class="cards">
+
+        <a class="card" href="projectcard1.html">
+          <img src="icon1.jpg" alt="Skill builder">
+          <h3>Skill Builder</h3>
+          <p>A Claude Code skill is a reusable file that tells the AI how to handle a specific task without re-explaining it each session. I built two skills: one that reconciles weekly supplier data into a procurement brief, and one that applies Anthropic's official brand colors to any document. Both are installed and working — a single slash command produces a finished output.</p>
+        </a>
+
+        <a class="card" href="projectcard2.html">
+          <img src="icon2.jpg" alt="Skills showcase landing page">
+          <h3>Skills Showcase Landing Page</h3>
+          <p>A landing page for an Atlantis University event on deploying AI agents in real production environments, covering orchestration, evaluation drift, and human handoff. I wrote three progressively detailed prompts for Lovable, an AI web builder, to construct the hero section, speaker profile, and a working registration form step by step. The result is a complete, mobile-responsive page built entirely through prompts, with no code written by hand.</p>
+        </a>
+
+        <a class="card" href="projectcard3.html">
+          <img src="icon3.jpg" alt="More Memory">
+          <h3>More Memory</h3>
+          <p>A web page and Claude skill that captures notes and decisions from AI conversations and saves them into a structured Notion database so nothing is lost when the chat closes. I built the page, configured the Notion API connection, and wrote the skill so that saved items are tagged by type and organized automatically. The result is a memory layer that grows each session and can be recalled in any future conversation.</p>
+        </a>
+
+        <a class="card" href="projectcard4.html">
+          <img src="icon4.jpg" alt="Capstone: Local AI Model for Home Assistant">
+          <h3>Capstone: Local AI for Home Assistant</h3>
+          <p>A home AI system that runs entirely on local hardware — voice commands, camera analysis, and device control, with all data staying on the home network and nothing sent to the cloud. The design connects a local language model, Frigate for camera analysis, Home Assistant for device control, and a local voice interface into one system you can give spoken orders to. The project is in active development; the architecture is defined and components are being integrated.</p>
+        </a>
+
+      </div>
+
+      <h2 id="education">Education</h2>
+      <div class="split">
+        <div>
+          <h3>Education</h3>
+          <ul class="chain">
+            <li>MS in Artificial Intelligence<div class="where">Atlantis University</div></li>
+            <li>BSc in Computer Science<div class="where">UNPSJB (Argentina)</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        MS in Artificial Intelligence · Atlantis University
+      </footer>
+    </main>
+
+  </div>
+</div>
+
+<script src="../../assets/feedback.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<svg width="800" height="450" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e2a35"/>
+      <stop offset="100%" stop-color="#2f4356"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="675" fill="url(#bgGrad2)"/>
+
+  <!-- soft grid texture -->
+  <g stroke="#7fa8a3" stroke-width="1" opacity="0.08">
+    <line x1="0" y1="140" x2="1200" y2="140"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="530" x2="1200" y2="530"/>
+    <line x1="200" y1="0" x2="200" y2="675"/>
+    <line x1="450" y1="0" x2="450" y2="675"/>
+    <line x1="700" y1="0" x2="700" y2="675"/>
+    <line x1="950" y1="0" x2="950" y2="675"/>
+  </g>
+
+  <g transform="rotate(-1.5 600 337)">
+    <!-- house silhouette -->
+    <polygon points="500,190 700,190 780,300 420,300" fill="#7fa8a3"/>
+    <rect x="450" y="300" width="300" height="220" fill="#26343f" stroke="#7fa8a3" stroke-width="2"/>
+
+    <!-- door -->
+    <path d="M560 520 L560 430 Q560 405 600 405 Q640 405 640 430 L640 520 Z" fill="#c98a7d"/>
+    <circle cx="628" cy="470" r="5" fill="#1e2a35"/>
+
+    <!-- windows -->
+    <rect x="475" y="330" width="55" height="55" rx="6" fill="#d8c9a3"/>
+    <line x1="502" y1="330" x2="502" y2="385" stroke="#26343f" stroke-width="3"/>
+    <line x1="475" y1="357" x2="530" y2="357" stroke="#26343f" stroke-width="3"/>
+
+    <rect x="670" y="330" width="55" height="55" rx="6" fill="#d8c9a3"/>
+    <line x1="697" y1="330" x2="697" y2="385" stroke="#26343f" stroke-width="3"/>
+    <line x1="670" y1="357" x2="725" y2="357" stroke="#26343f" stroke-width="3"/>
+  </g>
+
+  <!-- booking calendar card -->
+  <g>
+    <rect x="120" y="380" width="230" height="190" rx="14" fill="#26343f" stroke="#d8c9a3" stroke-width="2"/>
+    <rect x="120" y="380" width="230" height="40" rx="14" fill="#d8c9a3"/>
+    <g fill="#7fa8a3" opacity="0.85">
+      <circle cx="155" cy="450" r="9"/>
+      <circle cx="195" cy="450" r="9"/>
+      <circle cx="235" cy="450" r="9" fill="#c98a7d"/>
+      <circle cx="275" cy="450" r="9" fill="#c98a7d"/>
+      <circle cx="315" cy="450" r="9"/>
+      <circle cx="155" cy="490" r="9"/>
+      <circle cx="195" cy="490" r="9"/>
+      <circle cx="235" cy="490" r="9"/>
+      <circle cx="275" cy="490" r="9"/>
+      <circle cx="315" cy="490" r="9"/>
+      <circle cx="155" cy="530" r="9"/>
+      <circle cx="195" cy="530" r="9"/>
+    </g>
+  </g>
+
+  <!-- key shape -->
+  <g transform="translate(900 460) rotate(20)">
+    <circle cx="0" cy="0" r="36" fill="none" stroke="#d8c9a3" stroke-width="14"/>
+    <rect x="30" y="-9" width="90" height="18" fill="#d8c9a3"/>
+    <rect x="95" y="9" width="16" height="22" fill="#d8c9a3"/>
+    <rect x="70" y="9" width="16" height="16" fill="#d8c9a3"/>
+  </g>
+</svg>
