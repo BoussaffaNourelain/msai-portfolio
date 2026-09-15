@@ -34,6 +34,25 @@
     border-color:#1857B4;
     text-decoration:none;
   }
+  /* My project cards open a page with more detail — make that clickable and obvious */
+  a.card{
+    color:inherit;
+    text-decoration:none;
+    display:block;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  a.card:hover, a.card:focus-visible{
+    text-decoration:none;
+    transform:translateY(-3px);
+    box-shadow:0 10px 24px rgba(16,24,40,.12);
+    border-color:#AFC6F2;
+  }
+  a.card h3{color:#1E6FE0}
+  a.card .open-hint{
+    display:inline-block;margin-top:10px;font-size:13px;font-weight:700;color:#1E6FE0;
+  }
+  a.card:hover .open-hint{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -79,7 +98,7 @@
       <h2 id="projects">Current Projects</h2>
       <div class="cards">
 
-        <article class="card">
+        <a class="card" href="modernization.html">
           <img src="project-modernization.svg" alt="Illustration of a building with an upgrade arrow">
           <h3>Modernization Program for Eldercare Facilities</h3>
           <p>A structured program to upgrade assisted-living and long-term care facilities
@@ -88,9 +107,10 @@
           diagnostics, ADA-compliant redesign, construction oversight, and staff training
           workshops. The result is a repeatable approach aimed at measurably lowering fall risk
           and operating costs, beginning with facilities in South Florida.</p>
-        </article>
+          <span class="open-hint">Open full project →</span>
+        </a>
 
-        <article class="card">
+        <a class="card" href="fall-risk.html">
           <img src="project-fall-risk.svg" alt="Illustration of a floor plan with highlighted fall-risk zones">
           <h3>AI Fall-Risk Mapping for Care Facilities</h3>
           <p>A tool that studies a facility's floor plans and walkthrough photos and marks the
@@ -98,16 +118,18 @@
           grab bars. I collected and labeled facility images, trained an image-recognition model,
           and produced a colour-coded risk map for each floor. It turns a site visit into a
           ranked list of accessibility fixes.</p>
-        </article>
+          <span class="open-hint">Open full project →</span>
+        </a>
 
-        <article class="card">
+        <a class="card" href="ada-assistant.html">
           <img src="project-ada-assistant.svg" alt="Illustration of a checklist document with a checkmark and a chat bubble">
           <h3>ADA Compliance Assistant</h3>
           <p>A question-and-answer assistant that checks renovation plans against ADA and Older
           Americans Act requirements. I gathered the regulations into a searchable knowledge base
           and connected it to a language model that answers design questions and flags compliance
           gaps, making compliance checks faster during the design stage.</p>
-        </article>
+          <span class="open-hint">Open full project →</span>
+        </a>
 
       </div>
 
