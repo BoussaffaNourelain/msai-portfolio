@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Fall-Risk Mapping for Care Facilities — Denise Quimi Fonseca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/style.css">
+<style>
+  body{
+    background-color:#F7F9FC;
+    background-image:url("bg-hypar.svg");
+    background-repeat:no-repeat;
+    background-position:center top;
+    background-size:cover;
+    background-attachment:fixed;
+  }
+  .rail-link{background:#1E6FE0;border-color:#1E6FE0;color:#fff}
+  .rail-link:hover{background:#1857B4;border-color:#1857B4}
+  .back{display:inline-block;margin-bottom:28px}
+  .detail-img{width:100%;max-width:560px;border-radius:14px;margin-bottom:28px;box-shadow:0 4px 16px rgba(16,24,40,.08)}
+  .note{border-left:4px solid var(--blue);padding:10px 0 10px 16px;color:var(--ink-soft);font-size:15px;margin:24px 0}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="badge" href="index.html">Denise Quimi Fonseca</a>
+  <a class="pill" href="index.html#projects">Projects</a>
+  <a class="pill" href="index.html#education">Education &amp; Experience</a>
+  <a class="pill" href="../../">All students</a>
+  <span class="spacer"></span>
+  <a class="pill" href="https://atlantisuniversity.edu/program/master-of-science-in-artificial-intelligence/" target="_blank" rel="noopener">MS in AI</a>
+</nav>
+
+<div class="wrap">
+  <main>
+    <a class="rail-link back" href="index.html#projects">← Back to my page</a>
+
+    <img class="detail-img" src="project-fall-risk.svg" alt="Illustration of a floor plan with highlighted fall-risk zones">
+
+    <h1>AI Fall-Risk Mapping for Care Facilities</h1>
+    <p class="quote">A concept project: teaching a model to spot the parts of a building most likely to cause a fall.</p>
+
+    <p>The idea is a tool that studies a facility's floor plans and walkthrough photos and marks
+    the zones most likely to cause falls — dim lighting, narrow corridors, missing grab bars,
+    uneven flooring, or poor sightlines near stairs.</p>
+
+    <p>How it would work:</p>
+    <ul class="chain">
+      <li>Data<div class="where">Labeled facility photos and floor plans marking known hazard types</div></li>
+      <li>Model<div class="where">An image-recognition model trained to detect those hazard types</div></li>
+      <li>Output<div class="where">A colour-coded risk map for each floor, ranked by severity</div></li>
+    </ul>
+
+    <p>It would turn a site visit into a ranked list of accessibility fixes — connecting directly
+    to the eldercare modernization work in my other project.</p>
+
+    <p class="note">This is a concept I developed for my MS in AI coursework — no dataset or
+    working prototype exists yet.</p>
+
+    <footer>MS in Artificial Intelligence · Atlantis University</footer>
+  </main>
+</div>
+
+</body>
+</html>
