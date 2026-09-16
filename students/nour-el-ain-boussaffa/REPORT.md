@@ -10,8 +10,8 @@
 
 *(Three cards — only three real projects were available, so no fourth was added.)*
 
-## Notes on my pull request
-Pull request #17 ("Round two — Nour El Ain Boussaffa") has not received any review comments yet — it is still open and waiting on review/merge.
+## Notes on my pull requests
+Pull request #17 ("Round two — Nour El Ain Boussaffa") merged on 2026-09-10. A later commit on the same branch (making the three project cards link to detail pages) was pushed after that merge, so it never reached the live site on its own — I opened pull request #30 to bring it in, and it is currently open and waiting on review/merge.
 
 ## Classmate I reviewed
 I reviewed two open pull requests and left a comment on each, naming each issue and the fix:
