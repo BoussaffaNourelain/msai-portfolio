@@ -1,0 +1,13 @@
+name = "msai-portfolio-contact"
+main = "src/index.js"
+compatibility_date = "2026-09-29"
+
+# Fill in with the real domain once you have it in Cloudflare, so this
+# Worker only intercepts /api/contact and everything else still goes
+# to GitHub Pages. Example: "www.your-domain.com/api/contact"
+# routes = [
+#   { pattern = "YOUR-DOMAIN/api/contact", zone_name = "YOUR-DOMAIN" }
+# ]
+
+# Secrets (TURNSTILE_SECRET, RESEND_API_KEY, CONTACT_TO) are NOT set here.
+# Set them with: wrangler secret put TURNSTILE_SECRET   (and so on)

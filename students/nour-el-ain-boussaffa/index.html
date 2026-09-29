@@ -10,6 +10,17 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/style.css">
+<style>
+  .contact-form{max-width:520px;display:flex;flex-direction:column;gap:16px}
+  .contact-form label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px;color:var(--ink-soft)}
+  .contact-form input,.contact-form textarea{font:inherit;padding:12px;border:1px solid var(--line);border-radius:var(--r);color:var(--ink)}
+  .contact-form textarea{resize:vertical}
+  .contact-form button{align-self:flex-start;background:var(--blue);color:#fff;font-weight:700;border:0;padding:12px 24px;border-radius:var(--r);cursor:pointer}
+  .contact-form button:hover{background:var(--blue-dark)}
+  .contact-form button:disabled{opacity:.6;cursor:default}
+  #contact-status{font-size:14px;color:var(--ink-soft);margin:0}
+  .hp-field{position:absolute;left:-9999px;top:-9999px}
+</style>
 </head>
 <body>
 
@@ -17,6 +28,7 @@
   <a class="badge" href="#top">Nour el ain Boussaffa</a>
   <a class="pill" href="#projects">Projects</a>
   <a class="pill" href="#education">Education &amp; Experience</a>
+  <a class="pill" href="#contact">Contact</a>
   <a class="pill" href="../../">All students</a>
   <span class="spacer"></span>
   <a class="pill" href="https://atlantisuniversity.edu/program/master-of-science-in-artificial-intelligence/" target="_blank" rel="noopener">MS in AI</a>
@@ -88,6 +100,32 @@
         </div>
       </div>
 
+      <h2 id="contact">Contact</h2>
+      <form id="contact-form" class="contact-form" novalidate>
+        <label>
+          Name
+          <input type="text" name="name" maxlength="100" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" maxlength="200" required>
+        </label>
+        <label>
+          Message
+          <textarea name="message" maxlength="5000" rows="6" required></textarea>
+        </label>
+
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="cf-turnstile" data-sitekey="PASTE-YOUR-SITE-KEY"></div>
+
+        <button type="submit">Send</button>
+        <p id="contact-status" role="status"></p>
+      </form>
+
       <footer>
         MS in Artificial Intelligence · Atlantis University
       </footer>
@@ -96,6 +134,47 @@
   </div>
 </div>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  var form = e.target;
+  var status = document.getElementById('contact-status');
+  status.textContent = '';
+
+  var tokenField = form.querySelector('[name="cf-turnstile-response"]');
+  var payload = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value,
+    website: form.website.value,
+    turnstileToken: tokenField ? tokenField.value : '',
+  };
+
+  var button = form.querySelector('button[type="submit"]');
+  button.disabled = true;
+
+  try {
+    var res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    var data = await res.json().catch(function () { return {}; });
+    if (res.ok) {
+      status.textContent = 'Thanks — your message has been sent.';
+      form.reset();
+      if (window.turnstile) window.turnstile.reset();
+    } else {
+      status.textContent = data.error || 'Something went wrong — please try again';
+    }
+  } catch (err) {
+    status.textContent = 'Something went wrong — please try again';
+  } finally {
+    button.disabled = false;
+  }
+});
+</script>
 <script src="../../assets/feedback.js" defer></script>
 </body>
 </html>
