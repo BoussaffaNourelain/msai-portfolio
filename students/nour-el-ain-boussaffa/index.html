@@ -20,6 +20,18 @@
   .contact-form button:disabled{opacity:.6;cursor:default}
   #contact-status{font-size:14px;color:var(--ink-soft);margin:0}
   .hp-field{position:absolute;left:-9999px;top:-9999px}
+
+  .chat-widget{max-width:520px;display:flex;flex-direction:column;gap:12px}
+  .chat-log{display:flex;flex-direction:column;gap:10px;max-height:360px;overflow-y:auto;border:1px solid var(--line);border-radius:var(--r);padding:16px;background:var(--bg-soft)}
+  .chat-msg{max-width:85%;padding:10px 14px;border-radius:var(--r);font-size:14px;line-height:1.5;white-space:pre-wrap}
+  .chat-msg-user{align-self:flex-end;background:var(--blue);color:#fff}
+  .chat-msg-assistant{align-self:flex-start;background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .chat-form{display:flex;gap:10px}
+  .chat-form input{flex:1;font:inherit;padding:12px;border:1px solid var(--line);border-radius:var(--r);color:var(--ink)}
+  .chat-form button{background:var(--blue);color:#fff;font-weight:700;border:0;padding:12px 20px;border-radius:var(--r);cursor:pointer}
+  .chat-form button:hover{background:var(--blue-dark)}
+  .chat-form button:disabled{opacity:.6;cursor:default}
+  .chat-disclaimer{font-size:12px;color:var(--ink-soft);margin:0}
 </style>
 </head>
 <body>
@@ -29,6 +41,7 @@
   <a class="pill" href="#projects">Projects</a>
   <a class="pill" href="#education">Education &amp; Experience</a>
   <a class="pill" href="#contact">Contact</a>
+  <a class="pill" href="#ask">Ask About Me</a>
   <a class="pill" href="../../">All students</a>
   <span class="spacer"></span>
   <a class="pill" href="https://atlantisuniversity.edu/program/master-of-science-in-artificial-intelligence/" target="_blank" rel="noopener">MS in AI</a>
@@ -104,15 +117,15 @@
       <form id="contact-form" class="contact-form" novalidate>
         <label>
           Name
-          <input type="text" name="name" maxlength="100" required>
+          <input type="text" name="name" required>
         </label>
         <label>
           Email
-          <input type="email" name="email" maxlength="200" required>
+          <input type="email" name="email" required>
         </label>
         <label>
           Message
-          <textarea name="message" maxlength="5000" rows="6" required></textarea>
+          <textarea name="message" rows="6" required></textarea>
         </label>
 
         <div class="hp-field" aria-hidden="true">
@@ -120,11 +133,22 @@
           <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
         </div>
 
-        <div class="cf-turnstile" data-sitekey="PASTE-YOUR-SITE-KEY"></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAFJGj6lC7EaxMXP7"></div>
 
         <button type="submit">Send</button>
         <p id="contact-status" role="status"></p>
       </form>
+
+      <h2 id="ask">Ask About Me</h2>
+      <div class="chat-widget">
+        <div id="chat-log" class="chat-log" aria-live="polite"></div>
+        <div id="chat-turnstile"></div>
+        <form id="chat-form" class="chat-form">
+          <input type="text" id="chat-input" maxlength="500" placeholder="Ask something about Nour's projects or background…" required>
+          <button type="submit">Ask</button>
+        </form>
+        <p class="chat-disclaimer">AI assistant · may be wrong · messages are processed by Cloudflare Workers AI.</p>
+      </div>
 
       <footer>
         MS in Artificial Intelligence · Atlantis University
@@ -134,8 +158,18 @@
   </div>
 </div>
 
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileReady" async defer></script>
 <script>
+// The chat widget's Turnstile is rendered explicitly (not via the
+// cf-turnstile class) so we can reset it and pull a fresh token
+// before every single message, not just once per page load.
+var chatTurnstileId = null;
+window.onTurnstileReady = function () {
+  chatTurnstileId = turnstile.render('#chat-turnstile', {
+    sitekey: '0x4AAAAAAFJGj6lC7EaxMXP7',
+  });
+};
+
 document.getElementById('contact-form').addEventListener('submit', async function (e) {
   e.preventDefault();
   var form = e.target;
@@ -155,7 +189,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   button.disabled = true;
 
   try {
-    var res = await fetch('/api/contact', {
+    var res = await fetch('https://msai-portfolio-contact.boussaffanourelain.workers.dev/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -172,6 +206,57 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     status.textContent = 'Something went wrong — please try again';
   } finally {
     button.disabled = false;
+  }
+});
+
+// ---- Ask About Me chat widget ----
+var chatHistory = [];
+var chatLog = document.getElementById('chat-log');
+var chatPageContext = document.querySelector('main').innerText.slice(0, 8000);
+
+function appendChatMessage(role, text) {
+  var div = document.createElement('div');
+  div.className = 'chat-msg chat-msg-' + role;
+  div.textContent = text; // plain text only, never HTML
+  chatLog.appendChild(div);
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+document.getElementById('chat-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  var input = document.getElementById('chat-input');
+  var text = input.value.trim();
+  if (!text) return;
+
+  var token = chatTurnstileId !== null ? turnstile.getResponse(chatTurnstileId) : '';
+  var historyBeforeThisMessage = chatHistory.slice();
+
+  appendChatMessage('user', text);
+  chatHistory.push({ role: 'user', content: text });
+  input.value = '';
+  input.disabled = true;
+
+  try {
+    var res = await fetch('https://msai-portfolio-contact.boussaffanourelain.workers.dev/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: text,
+        turnstileToken: token,
+        history: historyBeforeThisMessage,
+        pageContext: chatPageContext,
+      }),
+    });
+    var data = await res.json().catch(function () { return {}; });
+    var reply = data.reply || 'Something went wrong — please try again';
+    appendChatMessage('assistant', reply);
+    chatHistory.push({ role: 'assistant', content: reply });
+  } catch (err) {
+    appendChatMessage('assistant', 'Something went wrong — please try again');
+  } finally {
+    input.disabled = false;
+    input.focus();
+    if (chatTurnstileId !== null) turnstile.reset(chatTurnstileId);
   }
 });
 </script>

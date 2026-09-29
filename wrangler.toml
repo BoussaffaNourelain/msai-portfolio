@@ -2,6 +2,11 @@ name = "msai-portfolio-contact"
 main = "src/index.js"
 compatibility_date = "2026-09-29"
 
+# Powers the /api/chat assistant. No API key needed — this is a direct
+# binding to Cloudflare's own Workers AI, built into this Worker.
+[ai]
+binding = "AI"
+
 # Fill in with the real domain once you have it in Cloudflare, so this
 # Worker only intercepts /api/contact and everything else still goes
 # to GitHub Pages. Example: "www.your-domain.com/api/contact"
