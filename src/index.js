@@ -37,12 +37,6 @@ async function verifyTurnstile(token, secret, ip) {
     body,
   });
   const data = await res.json();
-  console.log('DEBUG: turnstile siteverify', {
-    success: data.success,
-    errorCodes: data['error-codes'],
-    tokenLength: (token || '').length,
-    secretLength: (secret || '').length,
-  });
   return data.success === true;
 }
 
@@ -89,15 +83,10 @@ async function handleContact(request, env) {
         text: message,
       }),
     });
-    if (!resendRes.ok) {
-      const errBody = await resendRes.text();
-      console.log('DEBUG: rejected at Resend send', resendRes.status, errBody);
-      return errorResponse(request);
-    }
+    if (!resendRes.ok) return errorResponse(request);
 
     return jsonResponse(request, { ok: true }, 200);
-  } catch (err) {
-    console.log('DEBUG: contact handler exception', String(err));
+  } catch {
     return errorResponse(request);
   }
 }
@@ -169,17 +158,13 @@ async function handleChat(request, env) {
     // this call only happens here, server-side, through the AI binding.
     const aiResult = await env.AI.run(CHAT_MODEL, { messages });
     const rawReply = aiResult?.response ?? aiResult?.choices?.[0]?.message?.content ?? '';
-    if (!rawReply) {
-      console.log('DEBUG: chat model returned no text', JSON.stringify(aiResult).slice(0, 300));
-      return jsonResponse(request, { reply: GENERIC_ERROR }, 400);
-    }
+    if (!rawReply) return jsonResponse(request, { reply: GENERIC_ERROR }, 400);
 
     // Reply cap enforced again here, independent of whether the model obeyed the prompt.
     const reply = truncateToWordLimit(rawReply, MAX_CHAT_REPLY_WORDS);
 
     return jsonResponse(request, { reply }, 200);
-  } catch (err) {
-    console.log('DEBUG: chat handler exception', String(err));
+  } catch {
     return jsonResponse(request, { reply: GENERIC_ERROR }, 400);
   }
 }
