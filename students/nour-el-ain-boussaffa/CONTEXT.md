@@ -5,27 +5,37 @@ The `CONTEXT.md` and `CLAUDE.md` files at the top level of `msai-portfolio/` bel
 another student (Juan Pablo Arnedo) — he committed them to the shared repo by mistake.
 Ignore them; this file, inside my own folder, is the real one to keep updated.
 
-## What is done (2026-09-29)
-- Added a Contact section to my page: `students/nour-el-ain-boussaffa/index.html`
-  - Fields: name, email, message, a Cloudflare Turnstile widget, and a hidden honeypot field.
-  - On submit, sends a JSON request to `/api/contact` and shows a plain status message.
-- Added the backend that receives that form, as a Cloudflare Worker (this lives at the
-  top level of the repo, not in my folder, because a single Worker has to serve every
-  student's `/api/contact` request — I got explicit permission to add these shared files):
-  - `src/index.js` — checks the Turnstile token, the honeypot, the required fields, and
-    the length limits, then sends the message with Resend.
-  - `wrangler.toml`, `package.json`, `.gitignore` — the setup needed to deploy that Worker.
+## What is done (2026-09-30)
+- **Contact form and "Ask About Me" chat assistant**, both live and verified working:
+  - `/api/contact` and `/api/chat` in the shared `src/index.js` Worker (permission
+    granted earlier to touch these few shared/root files, since one Worker has to serve
+    every student's requests).
+  - Deployed to `https://msai-portfolio-contact.boussaffanourelain.workers.dev`.
+  - Secrets set on the Worker: `TURNSTILE_SECRET`, `RESEND_API_KEY`, `CONTACT_TO`.
+  - Chat uses Cloudflare Workers AI (an `AI` binding — no API key needed) and answers
+    only from my own page's text, in the third person, with all the required caps
+    (500 chars in, 150 words out, 10 messages per conversation, Turnstile per message).
+  - Known limitation: email currently sends from Resend's shared test address
+    (`onboarding@resend.dev`), since I don't have my own verified domain yet. Switch to
+    `contact@<my domain>` once I do.
 
-## Still TO DO (I can't do these from the code editor — they need my own accounts)
-- Create/paste a real Cloudflare Turnstile site key into
-  `students/nour-el-ain-boussaffa/index.html` (currently a placeholder).
-- Get a Cloudflare Turnstile **secret** key and a Resend **API key**, and a "From" address
-  on a domain verified with Resend.
-- Run `npm install` then `wrangler login` and `wrangler deploy` from the repo root to
-  actually publish `src/index.js` as a Worker.
-- Set the three secrets Cloudflare needs (`wrangler secret put TURNSTILE_SECRET`, etc.)
-- Point a Cloudflare Worker Route at `/api/contact` on the site's real domain, and fill in
-  `env.CONTACT_TO` and the `from:` address in `src/index.js` for real values.
-- Important: the class site is hosted on GitHub Pages, which cannot run server code by
-  itself. The Worker only works if the domain is also set up behind Cloudflare with a
-  route for `/api/contact` — plain GitHub Pages alone will not run `src/index.js`.
+- **Full visual redesign — "Warm Editorial" direction** (2026-09-30):
+  - My own copy of the stylesheet: `students/nour-el-ain-boussaffa/style.css` (no longer
+    linking to the shared `assets/style.css` — every one of my pages points at my own
+    copy, so restyling never touches anyone else's page).
+  - New palette/type: raspberry accent (`#A8285A`), Instrument Serif (italic) paired with
+    Hanken Grotesk, single centered column instead of the two-column class layout.
+  - Redrew all three project illustrations (`project-training.svg`,
+    `project-guesthouse.svg`, `project-atc.svg`) in the new palette.
+  - Added `favicon.svg` (a simple monogram), a real `<meta name="description">`, and
+    Open Graph / Twitter card tags including a generated `og-image.png` (1200×630).
+  - Checked at phone width (375px): name and role are both visible without scrolling,
+    and the layout stacks cleanly.
+  - All existing links (nav anchors, project pages, LinkedIn/GitHub/Résumé, "All
+    students") kept exactly as they were — only styling and layout changed.
+
+## Still TO DO
+- Get a real domain, set it up in Cloudflare and Resend, then switch the "from" address
+  in `src/index.js` and the `og:url` / `og:image` URLs in `index.html` over to it.
+- Take the two screenshots the assignment asked for (`contact.png` of a received email,
+  `secrets.png` of the Cloudflare Variables and Secrets page) if not already saved.
